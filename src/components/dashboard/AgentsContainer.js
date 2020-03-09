@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import type {WorkloadSummary as AgentsSummary} from '../../types/Dashboard';
 import {Theme} from '../../types/Styling';
 import {green, yellow, blue, red} from '../../styling/Colors';

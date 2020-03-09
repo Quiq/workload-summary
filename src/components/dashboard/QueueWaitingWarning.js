@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
-import type from '../../types/Dashboard';
 import {Theme} from '../../types/Styling';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import {red} from '../../styling/Colors';
 import {exclamationCircle} from '../../styling/Icons';
 import Icon from '../atoms/Icon';

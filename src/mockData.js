@@ -155,6 +155,16 @@ export const roles = [
   },
 ];
 
+const createGuid = (): string => {
+  function s4() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+
+  return `${s4() + s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
+};
+
 const generateBareAgent = () => ({
   id: createGuid(),
   roles: ['everyone', roles[Math.ceil(Math.random() * 3)]],
@@ -239,16 +249,6 @@ const generateSummary = (timestamp?: number): WorkloadSummaryEvent => {
     id: createGuid(),
     timestamp: timestamp || Date.now(),
   };
-};
-
-const createGuid = (): string => {
-  function s4() {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1);
-  }
-
-  return `${s4() + s4()}-${s4()}-${s4()}-${s4()}-${s4()}${s4()}${s4()}`;
 };
 
 // Generate 1 hour's worth of history

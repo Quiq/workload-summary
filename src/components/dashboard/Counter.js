@@ -1,6 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
-import type from '../../types/Dashboard';
+import styled from '@emotion/styled';
 import {Theme} from '../../types/Styling';
 import Number from './Number';
 

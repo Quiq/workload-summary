@@ -1,7 +1,6 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import {green, yellow} from '../../styling/Colors';
-import type from '../../types/Dashboard';
 import {Theme} from '../../types/Styling';
 
 export type CounterBarProps = {

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import ToggleSetting from '../atoms/ToggleSetting';
 
 export type ThemeSwitcherProps = {active: boolean, onChange: (value: boolean) => void};

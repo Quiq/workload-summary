@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import {space, layout, color, border, flexbox, position, shadow, typography} from 'styled-system';
 
 export const Box = styled.div`

@@ -1,9 +1,7 @@
 import * as React from 'react';
-import styled, {css} from 'react-emotion';
+import styled from '@emotion/styled';
+import {css} from 'emotion';
 import Toggle from './Toggle';
-import Icon from './Icon';
-import {infoCircle} from '../../styling/Icons';
-import * as colors from '../../styling/Colors';
 import {Label, Flex} from '../../styling/Layout';
 
 export type ToggleSettingProps = {
@@ -21,10 +19,6 @@ const ToggleActiveArea = styled(Flex)`
   flex: 0 0 auto;
 `;
 
-interface ToggleLabelStyle {
-  overrides?: string;
-}
-
 const ToggleLabel = styled.div`
   flex: 1 1 auto;
   vertical-align: top;
@@ -33,17 +27,6 @@ const ToggleLabel = styled.div`
     color: inherit;
     ${props => props.overrides};
   }
-`;
-
-const ToggleDescription = styled.div`
-  color: ${colors.secondaryText};
-`;
-
-const InfoLink = styled.a`
-  margin-left: 4px;
-  font-size: 15px;
-  color: ${colors.secondaryText};
-  vertical-align: text-top;
 `;
 
 export const ToggleSetting = (props: ToggleSettingProps) => (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import * as colors from '../../styling/Colors';
 
 export type ToggleProps = {
@@ -14,13 +14,6 @@ const getSwitchWidth = (toggleHeight: number, clicked = false) =>
 
 const getSwitchLeftPosition = ({toggleWidth, toggleHeight, active, clicked = false}) =>
   active ? toggleWidth - 3 - getSwitchWidth(toggleHeight, clicked) : 1;
-
-interface BackgroundStyle {
-  height: number;
-  width: number;
-  active: boolean;
-  disabled?: boolean;
-}
 
 const Background = styled.div`
   box-sizing: border-box;
@@ -44,12 +37,6 @@ const Background = styled.div`
       })}px;
   }
 `;
-
-interface SwichStyle {
-  toggleWidth: number;
-  toggleHeight: number;
-  active: boolean;
-}
 
 const Switch = styled.div`
   position: absolute;
