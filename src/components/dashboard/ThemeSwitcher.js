@@ -6,8 +6,8 @@ export type ThemeSwitcherProps = {active: boolean, onChange: (value: boolean) =>
 
 const ThemeSwitcherContainer = styled.div`
   position: fixed;
-  right: 20px;
-  bottom: 0;
+  right: 16px;
+  bottom: 16px;
 `;
 
 export class ThemeSwitcher extends React.Component<ThemeSwitcherProps> {

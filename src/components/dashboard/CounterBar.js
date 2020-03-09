@@ -10,15 +10,12 @@ export type CounterBarProps = {
 };
 
 const CounterBarContainer = styled.div`
-  width: 830px;
   height: 45px;
   display: flex;
 `;
 
 const Item1 = styled.div`
-  /* min-width: ${props => props.width}%; */
   width: ${props => props.width}%;
-  /* max-width: ${props => props.width}%; */
   height: 45px;
   background: ${green};
   transition: width 2s;
@@ -27,9 +24,7 @@ const Item1 = styled.div`
 `;
 
 const Item2 = styled.div`
-  /* min-width: ${props => props.width}%; */
   width: ${props => props.width}%;
-  /* max-width: ${props => props.width}%; */
   height: 45px;
   background: ${yellow};
   transition: width 2s;

@@ -12,34 +12,39 @@ export type AgentsContainerProps = {
 };
 
 const AgentsContainerContainer = styled.div`
-  height: 635px;
+  height: 590px;
   width: 300px;
   min-width: 300px;
   display: flex;
   flex-direction: column;
-  padding: 15px;
+  padding: 12px;
   border-radius: 6px;
   background: ${props => props.theme.section};
   box-shadow: ${props => props.theme.shadow};
   justify-content: space-between;
 `;
 
-const Header = styled.div`
-  text-transform: uppercase;
-  font-size: 25px;
-`;
-
-const Number = styled.div`
-  font-size: 100px;
-  font-weight: 200;
-  color: ${props => props.color};
-  flex: 0 0 40%;
-  text-align: center;
-`;
-
 const Agents = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1 auto;
+  margin: 0 0 48px 0;
+`;
+
+const Header = styled.div`
+  text-transform: uppercase;
+  font-size: 24px;
+  flex: none;
+`;
+
+const Number = styled.div`
+  display: flex;
+  flex: 1 auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: 200;
+  color: ${props => props.color};
 `;
 
 const AgentList = styled.div``;

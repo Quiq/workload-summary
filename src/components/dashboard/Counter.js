@@ -11,7 +11,7 @@ export type CounterProps = {
 };
 
 const CounterContainer = styled.div`
-  width: 400px;
+  margin: 0 24px 0 0;
 `;
 
 const Label = styled.div`

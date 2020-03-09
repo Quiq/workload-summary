@@ -13,16 +13,25 @@ import QueueWaitingWarning from '../components/dashboard/QueueWaitingWarning';
 
 export type WorkloadSummaryProps = {};
 
-const WorkloadSummaryContainer = styled.div`
-  background: ${props => props.theme.background};
-  color: ${props => props.theme.textColor};
+const AppContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  padding: 50px;
+
+  background: ${props => props.theme.background};
+  color: ${props => props.theme.textColor};
+  width: calc(100% - 24px * 2);
+  min-height: calc(100vh - 24px * 2);
+  padding: 24px;
   font-family: 'Source Sans Pro', Roboto, Lato, tahoma !important;
   letter-spacing: 0.025rem;
+`;
+
+const WorkloadSummaryContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 0 0 96px 0;
 
   div * {
     font-family: 'Source Sans Pro', Roboto, Lato, tahoma !important;
@@ -30,16 +39,47 @@ const WorkloadSummaryContainer = styled.div`
 `;
 
 const CardContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 24px;
+
+  ${props =>
+    props.cardCount >= 3 &&
+    `@media (min-width: 1300px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  `};
+
+  ${props =>
+    props.cardCount >= 4 &&
+    `@media (min-width: 1650px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  `};
+
+  ${props =>
+    props.cardCount >= 5 &&
+    `@media (min-width: 2000px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+  `};
+
+  ${props =>
+    props.cardCount >= 6 &&
+    `@media (min-width: 2350px) {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+  `};
 `;
 
 const QueuesContainer = styled.div`
-  margin-top: 25px;
+  margin-top: 24px;
 `;
 
 const LHS = styled.div`
   display: block;
-  position: relative;
+  margin: 0 24px 0 0;
 `;
 
 const Header = styled.div`
@@ -79,30 +119,30 @@ export class WorkloadSummary extends React.Component<WorkloadSummaryProps, Workl
       .reduce((a, b) => a + b, 0);
 
     return (
-      <WorkloadSummaryContainer theme={theme} className="WorkloadSummary">
-        <LHS>
-          <ConvoCounterContainer theme={theme} workloadSummary={this.state.workloadSummary} />
-          <QueuesContainer>
-            <Header>Queues</Header>
-            <CardContainer>
-              {lastSummary.queueSummaries.map(s => (
-                <Card key={s.queue} queueSummary={s} theme={theme} />
-              ))}
-            </CardContainer>
-          </QueuesContainer>
-          {
-            <QueueWaitingWarning
-              theme={theme}
-              total={totalFolksWaitingMoreThanFiveMinutesInQueue}
-            />
-          }
-        </LHS>
-        <AgentsContainer theme={theme} agentsSummary={lastSummary.agentsSummary} />
+      <AppContainer theme={theme}>
+        <WorkloadSummaryContainer className="WorkloadSummary">
+          <LHS>
+            <ConvoCounterContainer theme={theme} workloadSummary={this.state.workloadSummary} />
+            <QueuesContainer>
+              <Header>Queues</Header>
+              <CardContainer cardCount={lastSummary.queueSummaries.length * 2}>
+                {lastSummary.queueSummaries.map(s => (
+                  <Card key={s.queue} queueSummary={s} theme={theme} />
+                ))}
+                {lastSummary.queueSummaries.map(s => (
+                  <Card key={s.queue} queueSummary={s} theme={theme} />
+                ))}
+              </CardContainer>
+            </QueuesContainer>
+          </LHS>
+          <AgentsContainer theme={theme} agentsSummary={lastSummary.agentsSummary} />
+        </WorkloadSummaryContainer>
+        {<QueueWaitingWarning theme={theme} total={totalFolksWaitingMoreThanFiveMinutesInQueue} />}
         <ThemeSwitcher
           active={this.state.theme === 'light'}
           onChange={light => this.setState({theme: light ? 'light' : 'dark'})}
         />
-      </WorkloadSummaryContainer>
+      </AppContainer>
     );
   }
 }

@@ -13,12 +13,11 @@ export type CardProps = {
 };
 
 const CardContainer = styled.div`
-  margin-right: 25px;
   width: 260px;
   height: 320px;
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 12px;
   border-radius: 6px;
   background: ${props => props.theme.section};
   box-shadow: ${props => props.theme.shadow};
@@ -31,6 +30,7 @@ const Header = styled.div`
 
 const Row = styled.div`
   display: flex;
+  margin: 12px 0;
 `;
 
 const NumberStyle = (color: string) => css`

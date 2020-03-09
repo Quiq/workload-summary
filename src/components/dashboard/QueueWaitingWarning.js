@@ -16,10 +16,10 @@ type QueueWaitingWarningState = {
 };
 
 const QueueWaitingWarningContainer = styled.div`
-  position: absolute;
-  bottom: -85px;
-  height: 60px;
-  width: calc(100% + 300px);
+  position: fixed;
+  bottom: 24px;
+  width: 850px;
+  padding: 12px;
   background: ${props => props.theme.section};
   box-shadow: ${props => props.theme.shadow};
   border-radius: 6px;
