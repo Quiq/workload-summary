@@ -125,10 +125,7 @@ export class WorkloadSummary extends React.Component<WorkloadSummaryProps, Workl
             <ConvoCounterContainer theme={theme} workloadSummary={this.state.workloadSummary} />
             <QueuesContainer>
               <Header>Queues</Header>
-              <CardContainer cardCount={lastSummary.queueSummaries.length * 2}>
-                {lastSummary.queueSummaries.map(s => (
-                  <Card key={s.queue} queueSummary={s} theme={theme} />
-                ))}
+              <CardContainer cardCount={lastSummary.queueSummaries.length}>
                 {lastSummary.queueSummaries.map(s => (
                   <Card key={s.queue} queueSummary={s} theme={theme} />
                 ))}

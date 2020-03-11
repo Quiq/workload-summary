@@ -29,12 +29,30 @@ const Agents = styled.div`
   flex-direction: column;
   flex: 1 auto;
   margin: 0 0 48px 0;
+
+  ${props =>
+    props.agentCount > 110 &&
+    `
+      margin-bottom: 24px;
+    `}
+
+  ${props =>
+    props.agentCount > 185 &&
+    `
+      margin-bottom: 12px;
+    `}
 `;
 
 const Header = styled.div`
   text-transform: uppercase;
   font-size: 24px;
   flex: none;
+
+  ${props =>
+    props.agentCount > 185 &&
+    `
+      font-size: 16px;
+    `}
 `;
 
 const Number = styled.div`
@@ -42,9 +60,21 @@ const Number = styled.div`
   flex: 1 auto;
   justify-content: center;
   align-items: center;
-  font-size: 100px;
+  font-size: 96px;
   font-weight: 200;
   color: ${props => props.color};
+
+  ${props =>
+    props.agentCount > 110 &&
+    `
+      font-size: 72px;
+    `}
+
+  ${props =>
+    props.agentCount > 185 &&
+    `
+      font-size: 48px;
+    `}
 `;
 
 const AgentList = styled.div``;
@@ -58,17 +88,20 @@ export class AgentsContainer extends React.Component<AgentsContainerProps> {
 
   render() {
     const {available, unavailable, availableForExisting} = this.props.agentsSummary;
+    const agentCount = available.length + unavailable.length + availableForExisting.length;
 
     return (
       <AgentsContainerContainer theme={this.props.theme} className="AgentsContainer">
-        <Agents>
-          <Header>Available Agents</Header>
-          <Number color={green}>{available.length}</Number>
+        <Agents agentCount={agentCount}>
+          <Header agentCount={agentCount}>Available Agents</Header>
+          <Number color={green} agentCount={agentCount}>
+            {available.length}
+          </Number>
         </Agents>
-        <Agents>
-          <Header>Total Agents</Header>
-          <Number color={blue}>
-            {available.length + unavailable.length + availableForExisting.length}
+        <Agents agentCount={agentCount}>
+          <Header agentCount={agentCount}>Total Agents</Header>
+          <Number color={blue} agentCount={agentCount}>
+            {agentCount}
           </Number>
         </Agents>
         <AgentList>
