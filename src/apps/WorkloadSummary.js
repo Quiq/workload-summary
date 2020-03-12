@@ -1,7 +1,7 @@
 // @flow
 import * as React from 'react';
 import styled from '@emotion/styled';
-import connect from '../mockData';
+import connect from '../datasource/connect';
 import ConvoCounterContainer from '../components/dashboard/ConvoCounterContainer';
 import Card from '../components/dashboard/Card';
 import type {WorkloadSummary as WorkloadSummaryType} from '../types';
@@ -89,32 +89,33 @@ const Header = styled.div`
 `;
 
 type WorkloadSummaryState = {
-  workloadSummary: Array<WorkloadSummaryType>,
+  workloadSummary: WorkloadSummaryType,
   theme: string,
 };
 
 export class WorkloadSummary extends React.Component<WorkloadSummaryProps, WorkloadSummaryState> {
   props: WorkloadSummaryProps;
   state: WorkloadSummaryState = {
-    workloadSummary: [],
+    workloadSummary: null,
     theme: 'dark',
   };
 
   componentDidMount() {
     connect((data: any) => {
-      const summary = [...this.state.workloadSummary];
-      summary.push(...data.map(d => d.data));
-      if (summary.length > 60) summary.shift();
-      this.setState({workloadSummary: summary});
+      this.setState({workloadSummary: data});
     });
   }
 
   render() {
     const theme = themes[this.state.theme];
 
-    if (!this.state.workloadSummary.length) return null;
-    const lastSummary = last(this.state.workloadSummary);
-    const totalFolksWaitingMoreThanFiveMinutesInQueue = lastSummary.queueSummaries
+    console.log('render', this.state.workloadSummary);
+    if (!this.state.workloadSummary) return null;
+
+    const queueSummaries = this.state.workloadSummary.queueSummaries;
+    const agentsSummary = this.state.workloadSummary.agentsSummary;
+
+    const totalFolksWaitingMoreThanFiveMinutesInQueue = queueSummaries
       .flatMap(q => q.itemsExceedingFiveMinutes)
       .reduce((a, b) => a + b, 0);
 
@@ -125,14 +126,14 @@ export class WorkloadSummary extends React.Component<WorkloadSummaryProps, Workl
             <ConvoCounterContainer theme={theme} workloadSummary={this.state.workloadSummary} />
             <QueuesContainer>
               <Header>Queues</Header>
-              <CardContainer cardCount={lastSummary.queueSummaries.length}>
-                {lastSummary.queueSummaries.map(s => (
+              <CardContainer cardCount={queueSummaries.length}>
+                {queueSummaries.map(s => (
                   <Card key={s.queue} queueSummary={s} theme={theme} />
                 ))}
               </CardContainer>
             </QueuesContainer>
           </LHS>
-          <AgentsContainer theme={theme} agentsSummary={lastSummary.agentsSummary} />
+          <AgentsContainer theme={theme} agentsSummary={agentsSummary} />
         </WorkloadSummaryContainer>
         {<QueueWaitingWarning theme={theme} total={totalFolksWaitingMoreThanFiveMinutesInQueue} />}
         <ThemeSwitcher

@@ -9,7 +9,7 @@ import CounterBar from './CounterBar';
 import {green, yellow} from '../../styling/Colors';
 
 export type ConvoCounterContainerProps = {
-  workloadSummary: Array<WorkloadSummaryType>,
+  workloadSummary: WorkloadSummaryType,
   theme: Theme,
 };
 
@@ -23,8 +23,8 @@ export class ConvoCounterContainer extends React.Component<ConvoCounterContainer
   props: ConvoCounterContainerProps;
 
   render() {
-    const totalConvos = get(last(this.props.workloadSummary), 'totalItems', 0);
-    const totalInQueue = get(last(this.props.workloadSummary), 'waitingItems', 0);
+    const totalConvos = get(this.props.workloadSummary, 'totalItems', 0);
+    const totalInQueue = get(this.props.workloadSummary, 'waitingItems', 0);
 
     return (
       <ConvoCounterContainerContainer className="ConvoCounterContainer">
