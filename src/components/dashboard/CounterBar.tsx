@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {green, yellow} from '../../styling/Colors';
-import {Theme} from '../../types/Styling';
+import {green, yellow} from '../../styling/colors';
+import {Theme} from '../../types/styling';
 
 export type CounterBarProps = {
-  item1: number,
-  item2: number,
-  theme: Theme,
+  item1: number;
+  item2: number;
+  theme: Theme;
 };
 
 const CounterBarContainer = styled.div`
@@ -16,14 +16,14 @@ const CounterBarContainer = styled.div`
   overflow: hidden;
 `;
 
-const Item1 = styled.div`
+const Item1 = styled.div<{width: number}>`
   width: ${props => props.width}%;
   height: 45px;
   background: ${green};
   transition: width 2s;
 `;
 
-const Item2 = styled.div`
+const Item2 = styled.div<{width: number}>`
   width: ${props => props.width}%;
   height: 45px;
   background: ${yellow};

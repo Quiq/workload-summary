@@ -3,14 +3,14 @@ import styled from '@emotion/styled';
 import CountUp from 'react-countup';
 
 export type NumberProps = {
-  color: string,
-  number: number,
-  fontSize: number,
-  className?: string,
+  color?: string;
+  number: number;
+  fontSize?: number;
+  className?: string;
 };
 
 type NumberState = {
-  prevNumber: 0,
+  prevNumber: number;
 };
 
 const NumberStyle = styled(CountUp)`

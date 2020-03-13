@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import ToggleSetting from '../atoms/ToggleSetting';
 
-export type ThemeSwitcherProps = {active: boolean, onChange: (value: boolean) => void};
+export type ThemeSwitcherProps = {active: boolean; onChange: (value: boolean) => void};
 
 const ThemeSwitcherContainer = styled.div`
   position: fixed;

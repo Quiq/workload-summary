@@ -1,4 +1,6 @@
-export const themes = {
+import {Themes} from '../types/styling';
+
+export const themes: Themes = {
   dark: {
     background: '#324A52',
     section: '#385E6B',

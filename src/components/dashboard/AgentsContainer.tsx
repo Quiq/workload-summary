@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import type {WorkloadSummary as AgentsSummary} from '../../types/Dashboard';
-import {Theme} from '../../types/Styling';
-import {green, yellow, blue, red} from '../../styling/Colors';
-import {user} from '../../styling/Icons';
+import {AgentsSummary} from '../../types/dashboard';
+import {Theme} from '../../types/styling';
+import {green, yellow, blue, red} from '../../styling/colors';
+import {user} from '../../styling/icons';
 import Icon from '../atoms/Icon';
 
 export type AgentsContainerProps = {
-  agentsSummary: AgentsSummary,
-  theme: Theme,
+  agentsSummary: AgentsSummary;
+  theme: Theme;
 };
 
-const AgentsContainerContainer = styled.div`
+const AgentsContainerContainer = styled.div<{theme: Theme}>`
   height: 590px;
   width: 300px;
   min-width: 300px;
@@ -24,7 +24,7 @@ const AgentsContainerContainer = styled.div`
   justify-content: space-between;
 `;
 
-const Agents = styled.div`
+const Agents = styled.div<{agentCount: number}>`
   display: flex;
   flex-direction: column;
   flex: 1 auto;
@@ -43,7 +43,7 @@ const Agents = styled.div`
     `}
 `;
 
-const Header = styled.div`
+const Header = styled.div<{agentCount: number}>`
   text-transform: uppercase;
   font-size: 24px;
   flex: none;
@@ -55,7 +55,7 @@ const Header = styled.div`
     `}
 `;
 
-const Number = styled.div`
+const Number = styled.div<{agentCount: number; color: string}>`
   display: flex;
   flex: 1 auto;
   justify-content: center;

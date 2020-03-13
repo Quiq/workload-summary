@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import {css} from 'emotion';
-import {green, yellow, red} from '../../styling/Colors';
-import type {QueueSummary} from '../../types/Dashboard';
-import {Theme} from '../../types/Styling';
+import {green, yellow, red} from '../../styling/colors';
+import {QueueSummary} from '../../types/dashboard';
+import {Theme} from '../../types/styling';
 import fecha from 'fecha';
 import Number from './Number';
 
 export type CardProps = {
-  theme: Theme,
-  queueSummary: QueueSummary,
+  theme: Theme;
+  queueSummary: QueueSummary;
 };
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{theme: Theme}>`
   width: 260px;
   height: 320px;
   display: flex;
@@ -42,7 +42,7 @@ const NumberStyle = (color: string) => css`
   text-align: center;
 `;
 
-const Label = styled.div`
+const Label = styled.div<{theme: Theme}>`
   color: ${props => props.theme.cardText};
   flex: 0 0 60%;
   font-weight: 200;

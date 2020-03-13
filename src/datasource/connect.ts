@@ -1,14 +1,11 @@
 import request from 'request';
-import QuiqSocket, {
-  FatalErrors as QuiqSocketFatalErrors,
-  Events as QuiqSocketEvents,
-} from 'quiq-socket';
-import {WorkloadSummary} from '../types/Dashboard';
+import QuiqSocket, {Events as QuiqSocketEvents} from 'quiq-socket';
+import {WorkloadSummary} from '../types/dashboard';
 
 //
 //
 //------------------------- Private Methods -------------------------//
-async function fetchWorkloadSummary(): WorkloadSummary {
+async function fetchWorkloadSummary(): Promise<WorkloadSummary> {
   return await new Promise((resolve, reject) => {
     request(
       `${window.location.protocol}//${window.location.host}/current`,
@@ -58,8 +55,9 @@ export function connect(callback: (workloadSummary: WorkloadSummary) => void): v
     .addEventListener(QuiqSocketEvents.CONNECTION_LOSS, handleConnectionLoss)
     .addEventListener(QuiqSocketEvents.MESSAGE, (data: WorkloadSummary) => {
       callback(data);
-    })
-    .connect();
+    });
+
+  quiqSocket.connect();
 }
 
 export default connect;

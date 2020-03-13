@@ -2,15 +2,21 @@ import * as React from 'react';
 import styled from '@emotion/styled';
 import {css} from 'emotion';
 import Toggle from './Toggle';
-import {Label, Flex} from '../../styling/Layout';
+import {Label, Flex} from '../../styling/layout';
 
 export type ToggleSettingProps = {
-  label: string,
-  active: boolean,
-  onChange: (value: boolean) => void,
+  label: string;
+  active: boolean;
+  name?: string;
+  className?: string;
+  labelStyle?: boolean;
+  toggleSize?: boolean;
+  toggleOnRight?: boolean;
+  disabled?: boolean;
+  onChange: (value: boolean) => void;
 };
 
-const ToggleSettingRoot = styled.div`
+const ToggleSettingRoot = styled.div<{toggleOnRight: boolean}>`
   display: flex;
   flex-direction: ${props => (props.toggleOnRight ? 'row-reverse' : 'row')};
 `;
@@ -19,7 +25,7 @@ const ToggleActiveArea = styled(Flex)`
   flex: 0 0 auto;
 `;
 
-const ToggleLabel = styled.div`
+const ToggleLabel = styled.div<{overrides: boolean}>`
   flex: 1 1 auto;
   vertical-align: top;
 
@@ -39,8 +45,8 @@ export const ToggleSetting = (props: ToggleSettingProps) => (
       aria-labelledby={props.name ? `${props.name}-toggle-label` : undefined}
       data-testid="activeArea"
       role="checkbox"
-      marginRight={1}
       height="24px"
+      marginRight={1}
       alignItems="center"
     >
       <Toggle active={props.active} disabled={props.disabled} {...props.toggleSize} />

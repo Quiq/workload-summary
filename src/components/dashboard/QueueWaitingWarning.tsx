@@ -1,21 +1,20 @@
-// @flow
 import React from 'react';
-import {Theme} from '../../types/Styling';
+import {Theme} from '../../types/styling';
 import styled from '@emotion/styled';
-import {red} from '../../styling/Colors';
-import {exclamationCircle} from '../../styling/Icons';
+import {red} from '../../styling/colors';
+import {exclamationCircle} from '../../styling/icons';
 import Icon from '../atoms/Icon';
 
 export type QueueWaitingWarningProps = {
-  total: number,
-  theme: Theme,
+  total: number;
+  theme: Theme;
 };
 
 type QueueWaitingWarningState = {
-  forceShow?: boolean,
+  forceShow?: boolean;
 };
 
-const QueueWaitingWarningContainer = styled.div`
+const QueueWaitingWarningContainer = styled.div<{theme: Theme; total: number}>`
   position: fixed;
   bottom: 24px;
   width: 850px;
@@ -39,7 +38,7 @@ const Text = styled.span`
 
 export class QueueWaitingWarning extends React.Component<
   QueueWaitingWarningProps,
-  QueueWaitingWarningState,
+  QueueWaitingWarningState
 > {
   props: QueueWaitingWarningProps;
   state: QueueWaitingWarningState = {

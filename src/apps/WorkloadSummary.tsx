@@ -1,19 +1,18 @@
-// @flow
 import * as React from 'react';
 import styled from '@emotion/styled';
 import connect from '../datasource/connect';
 import ConvoCounterContainer from '../components/dashboard/ConvoCounterContainer';
 import Card from '../components/dashboard/Card';
-import type {WorkloadSummary as WorkloadSummaryType} from '../types';
-import {themes} from '../styling/Themes';
-import last from 'lodash/last';
+import {WorkloadSummary as WorkloadSummaryType} from '../types/dashboard';
+import {Theme} from '../types/styling';
+import {themes} from '../styling/themes';
 import AgentsContainer from '../components/dashboard/AgentsContainer';
 import ThemeSwitcher from '../components/dashboard/ThemeSwitcher';
 import QueueWaitingWarning from '../components/dashboard/QueueWaitingWarning';
 
 export type WorkloadSummaryProps = {};
 
-const AppContainer = styled.div`
+const AppContainer = styled.div<{theme: Theme}>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +37,7 @@ const WorkloadSummaryContainer = styled.div`
   }
 `;
 
-const CardContainer = styled.div`
+const CardContainer = styled.div<{cardCount: number}>`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -89,12 +88,12 @@ const Header = styled.div`
 `;
 
 type WorkloadSummaryState = {
-  workloadSummary: WorkloadSummaryType,
-  theme: string,
+  workloadSummary: WorkloadSummaryType | null;
+  theme: string;
 };
 
 export class WorkloadSummary extends React.Component<WorkloadSummaryProps, WorkloadSummaryState> {
-  props: WorkloadSummaryProps;
+  props: WorkloadSummaryProps = {};
   state: WorkloadSummaryState = {
     workloadSummary: null,
     theme: 'dark',
@@ -120,6 +119,7 @@ export class WorkloadSummary extends React.Component<WorkloadSummaryProps, Workl
     const agentsSummary = this.state.workloadSummary.agentsSummary;
 
     const totalFolksWaitingMoreThanFiveMinutesInQueue = queueSummaries
+      // @ts-ignore
       .flatMap(q => q.itemsExceedingFiveMinutes)
       .reduce((a, b) => a + b, 0);
 

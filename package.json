@@ -5,12 +5,17 @@
   "dependencies": {
     "@emotion/core": "^10.0.28",
     "@emotion/styled": "^10.0.27",
-    "@fortawesome/fontawesome-svg-core": "1.2.17",
-    "@fortawesome/pro-solid-svg-icons": "5.8.1",
-    "@fortawesome/react-fontawesome": "0.1.4",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^25.1.4",
+    "@types/node": "^13.9.1",
+    "@types/react": "^16.9.23",
+    "@types/react-dom": "^16.9.5",
+    "@types/styled-system": "^5.1.9",
+    "@fortawesome/fontawesome-svg-core": "1.2.17",
+    "@fortawesome/pro-solid-svg-icons": "5.8.1",
+    "@fortawesome/react-fontawesome": "0.1.4",
     "body-parser": "^1.19.0",
     "emotion": "^10.0.27",
     "express": "^4.17.1",
@@ -22,7 +27,8 @@
     "react-countup": "4.2.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
-    "styled-system": "^5.1.5"
+    "styled-system": "^5.1.5",
+    "typescript": "^3.8.3"
   },
   "scripts": {
     "start": "react-scripts start",

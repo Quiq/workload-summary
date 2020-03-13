@@ -1,12 +1,12 @@
 import * as React from 'react';
 import styled from '@emotion/styled';
-import * as colors from '../../styling/Colors';
+import * as colors from '../../styling/colors';
 
 export type ToggleProps = {
-  active: boolean,
-  disabled?: boolean,
-  width: number,
-  height: number,
+  active: boolean;
+  disabled?: boolean;
+  width: number;
+  height: number;
 };
 
 const getSwitchWidth = (toggleHeight: number, clicked = false) =>
@@ -15,7 +15,7 @@ const getSwitchWidth = (toggleHeight: number, clicked = false) =>
 const getSwitchLeftPosition = ({toggleWidth, toggleHeight, active, clicked = false}) =>
   active ? toggleWidth - 3 - getSwitchWidth(toggleHeight, clicked) : 1;
 
-const Background = styled.div`
+const Background = styled.div<ToggleProps>`
   box-sizing: border-box;
   height: ${props => props.height}px;
   width: ${props => props.width}px;
@@ -38,7 +38,7 @@ const Background = styled.div`
   }
 `;
 
-const Switch = styled.div`
+const Switch = styled.div<{active: boolean; toggleWidth: number; toggleHeight: number}>`
   position: absolute;
   top: 1px;
   left: ${({toggleWidth, toggleHeight, active}) =>

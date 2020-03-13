@@ -1,17 +1,21 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import {Theme} from '../../types/Styling';
+import {Theme} from '../../types/styling';
 import Number from './Number';
 
 export type CounterProps = {
-  total: number,
-  label: string,
-  theme: Theme,
-  color: string,
+  total: number;
+  label: string;
+  theme: Theme;
+  color: string;
 };
 
 const CounterContainer = styled.div`
-  margin: 0 24px 0 0;
+  margin: 0 60px 0 0;
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const Label = styled.div`

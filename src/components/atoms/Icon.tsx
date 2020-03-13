@@ -1,34 +1,34 @@
 import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {circle as circleIcon} from '../../styling/Icons';
+import {circle as circleIcon} from '../../styling/icons';
 
 export type IconProps = {
   // Native Props - https://github.com/FortAwesome/react-fontawesome#features
-  icon?: any,
-  border?: boolean,
-  className?: string,
-  mask?: Array<any> | Object | string,
-  fixedWidth?: boolean,
-  flip?: 'horizontal' | 'vertical' | 'both',
-  pull?: 'left' | 'right',
-  pulse?: boolean,
-  name?: string,
-  rotation?: 90 | 180 | 270,
-  listItem?: boolean,
-  size?: 'lg' | 'xs' | 'sm' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x',
-  spin?: boolean,
-  symbol?: boolean | string,
-  transform?: string | Object,
-  color?: string,
+  icon?: any;
+  border?: boolean;
+  className?: string;
+  mask?: Array<any> | Object | string;
+  fixedWidth?: boolean;
+  flip?: 'horizontal' | 'vertical' | 'both';
+  pull?: 'left' | 'right';
+  pulse?: boolean;
+  name?: string;
+  rotation?: 90 | 180 | 270;
+  listItem?: boolean;
+  size?: 'lg' | 'xs' | 'sm' | '1x' | '2x' | '3x' | '4x' | '5x' | '6x' | '7x' | '8x' | '9x' | '10x';
+  spin?: boolean;
+  symbol?: boolean | string;
+  transform?: string | Object;
+  color?: string;
 
   // Our props
-  title?: string,
-  onClick?: (e: React.MouseEvent) => void,
-  onMouseEnter?: () => void,
-  onMouseLeave?: () => void,
-  style?: Object,
-  circle?: boolean,
-  css?: string,
+  title?: string;
+  onClick?: (e: React.MouseEvent) => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+  style?: Object;
+  circle?: boolean;
+  css?: string;
 };
 
 /**

@@ -1,16 +1,15 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import Counter from './Counter';
-import type {WorkloadSummary as WorkloadSummaryType} from '../../types/Dashboard';
-import {Theme} from '../../types/Styling';
+import {WorkloadSummary as WorkloadSummaryType} from '../../types/dashboard';
+import {Theme} from '../../types/styling';
 import get from 'lodash/get';
-import last from 'lodash/last';
 import CounterBar from './CounterBar';
-import {green, yellow} from '../../styling/Colors';
+import {green, yellow} from '../../styling/colors';
 
 export type ConvoCounterContainerProps = {
-  workloadSummary: WorkloadSummaryType,
-  theme: Theme,
+  workloadSummary: WorkloadSummaryType;
+  theme: Theme;
 };
 
 const ConvoCounterContainerContainer = styled.div``;
