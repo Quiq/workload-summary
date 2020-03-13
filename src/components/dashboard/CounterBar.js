@@ -12,6 +12,8 @@ export type CounterBarProps = {
 const CounterBarContainer = styled.div`
   height: 45px;
   display: flex;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
 const Item1 = styled.div`
@@ -19,8 +21,6 @@ const Item1 = styled.div`
   height: 45px;
   background: ${green};
   transition: width 2s;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
 `;
 
 const Item2 = styled.div`
@@ -28,8 +28,6 @@ const Item2 = styled.div`
   height: 45px;
   background: ${yellow};
   transition: width 2s;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
 `;
 
 export class CounterBar extends React.Component<CounterBarProps> {

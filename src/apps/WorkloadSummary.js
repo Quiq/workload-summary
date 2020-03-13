@@ -109,8 +109,12 @@ export class WorkloadSummary extends React.Component<WorkloadSummaryProps, Workl
   render() {
     const theme = themes[this.state.theme];
 
-    console.log('render', this.state.workloadSummary);
-    if (!this.state.workloadSummary) return null;
+    if (!this.state.workloadSummary)
+      return (
+        <AppContainer theme={theme}>
+          <h1>Workload Summary Data Unavailable</h1>
+        </AppContainer>
+      );
 
     const queueSummaries = this.state.workloadSummary.queueSummaries;
     const agentsSummary = this.state.workloadSummary.agentsSummary;

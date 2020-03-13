@@ -55,7 +55,12 @@ export class Card extends React.Component<CardProps> {
   props: CardProps;
 
   render() {
-    const {queue, totalItems, waitingItems, estimatedWaitTime} = this.props.queueSummary;
+    let {queue, totalItems, waitingItems, estimatedWaitTime} = this.props.queueSummary;
+
+    if (typeof estimatedWaitTime !== 'number') {
+      estimatedWaitTime = 0;
+    }
+
     return (
       <CardContainer theme={this.props.theme} className="Card">
         <Header>{queue}</Header>

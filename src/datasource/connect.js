@@ -38,7 +38,7 @@ function handleFatalError(event) {
 }
 
 function handleConnectionLoss(event) {
-  console.warning('Websocket connection lost.', event);
+  console.warn('Websocket connection lost.', event);
 }
 
 //
