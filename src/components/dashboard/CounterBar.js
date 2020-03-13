@@ -34,12 +34,25 @@ export class CounterBar extends React.Component<CounterBarProps> {
   props: CounterBarProps;
 
   render() {
-    const percentage = this.props.item1 <= 0 ? 0 : this.props.item2 / this.props.item1;
+    let totalCount = this.props.item1 + this.props.item2;
+    let percentage1 = 0;
+    let percentage2 = 0;
+
+    if (totalCount > 0) {
+      percentage1 = this.props.item1 / totalCount;
+      percentage2 = 1 - percentage1;
+    } else if (this.props.item1 >= this.props.item2) {
+      percentage1 = 1;
+      percentage2 = 0;
+    } else {
+      percentage1 = 0;
+      percentage2 = 1;
+    }
 
     return (
       <CounterBarContainer theme={this.props.theme} className="CounterBar">
-        <Item1 width={(1 - percentage) * 100} />
-        <Item2 width={percentage * 100} />
+        <Item1 width={percentage1 * 100} />
+        <Item2 width={percentage2 * 100} />
       </CounterBarContainer>
     );
   }
