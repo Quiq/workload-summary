@@ -8,7 +8,7 @@ const app = express();
 const expressWebsocket = require('express-ws')(app);
 
 app.use(morgan('combined'));
-app.use(express.static('build'));
+app.use(express.static(process.cwd()));
 
 // Single JSON Parser Instance
 const bodyParser = require('body-parser');
@@ -24,7 +24,7 @@ let _hookToken = '';
 //------------------------- Endpoints -------------------------//
 // GET - Browser Application
 app.get('/', async (request, response) => {
-  return response.sendFile(path.join(__dirname, '../build/index.html'));
+  return response.sendFile(path.join(process.cwd(), './index.html'));
 });
 
 // GET - Current Workload Summary
@@ -58,6 +58,11 @@ app.post('/hooks/WorkloadSummary', bodyParser.json(), async (request, response) 
     }
   }
 
+  // Log to console
+  console.log(
+    `Received workload summary. Sending status ${status} and message '${statusMessage}'.`,
+  );
+
   // Return Response
   response.statusMessage = statusMessage;
   return response.status(status).end();
@@ -77,7 +82,6 @@ app.ws('/connect', function(websocket, request) {
 
   // On close, remove the listener
   websocket.on('close', request => {
-    console.log('ON CLOSE', request);
     manager.removeEventListener(onWorkloadSummaryChange);
   });
 });

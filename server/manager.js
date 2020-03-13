@@ -44,8 +44,7 @@ function isValidQueueSummary(queueSummary) {
     isNotEmptyString(queueSummary.queue) &&
     isValidAgentsSummary(queueSummary.agentsSummary) &&
     typeof queueSummary.totalItems === 'number' &&
-    typeof queueSummary.waitingItems === 'number' &&
-    typeof queueSummary.estimatedWaitTime === 'number'
+    typeof queueSummary.waitingItems === 'number'
   );
 }
 
