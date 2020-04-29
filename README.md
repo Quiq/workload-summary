@@ -9,8 +9,6 @@ A dashboard that shows your current queues.
 
 ### Build - Dashboard
 
-Temporary Build Step: Add your Font Awesome token to the end of the second line of `./.npmrc`. This step is temporary since the icons will be replaced with free icons in an upcoming release.
-
 1. Open terminal and navigate to the application's root directory.
 2. Run `yarn build`.
 3. A new directory will be created at `./build/`.
