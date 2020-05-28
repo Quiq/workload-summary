@@ -23,7 +23,7 @@
     "express-ws": "^4.0.0",
     "fecha": "3.0.0",
     "morgan": "^1.9.1",
-    "quiq-socket": "0.0.7",
+    "quiq-socket": "^0.0.7",
     "react": "^16.13.0",
     "react-countup": "4.2.0",
     "react-dom": "^16.13.0",
